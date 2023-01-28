@@ -12,13 +12,13 @@ public class Entry
     public string DisplayQuestion() 
     {
         Random rando = new Random();
-        int randomNumber = rando.Next(_question.Length);
+        int randomNumber = rando.Next(_question.Length); 
         string chosenQuestion = _question[randomNumber];
         Console.WriteLine(chosenQuestion);
-        Console.WriteLine("Type away! ");
+        Console.Write("> ");
         string userWrote = Console.ReadLine();
 
-        _userEntry = $"{chosenQuestion} : {userWrote}";
+        _userEntry = $"Prompt:{chosenQuestion}. You wrote '{userWrote}';";
         Console.WriteLine(_userEntry);
         return _userEntry;
         

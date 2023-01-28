@@ -8,7 +8,8 @@ public class PromtGenerator
 
     public int PromptUser() 
     {   //Print a welcome followed by all the options. 
-        Console.WriteLine("Welcome!");
+        Console.WriteLine("Select an action");
+        Console.WriteLine("");
         for (int i = 0; i < _optionPrompts.Length; i++) 
         {
             Console.WriteLine(_optionPrompts[i]);
