@@ -5,22 +5,41 @@ class Program
     static void Main(string[] args)
     {
         
-        Scripture escritura = new Scripture();
-        escritura.hideWords();
+        Reference referencia = new Reference("Mark", "9", "23", "24");
+        
+        Scripture escritura = new Scripture("Jesus said unto him, If thou canst believe, all things are possible to him that believeth. And straightway the father of the child cried out, and said with tears, Lord, I believe; help thou mine unbelief.");
+        
 
-        String[] passedList = escritura.getScriptureWords();
+        // String[] passedList = escritura.getScriptureWords();
 
         Word palabra = new Word();
 
-        palabra.setWords(passedList);
-
-        Dictionary<String, bool> sampleDictionary = palabra.getDictionary();
+        String theReference = referencia.showReference();
+        palabra.setReference(theReference);
+  
 
         
-        for (int i = 0; i < sampleDictionary.Count;i++) {
+
+        
+        String wordString = escritura.getScriptureText();
+        String[] wordArray = wordString.Split(" ");
+
+        palabra.setScriptureWords(wordArray);
+
+        palabra.hideWords();
+
+       
+       
+
+        // palabra.setWords(passedList);
+
+        // Dictionary<String, bool> sampleDictionary = palabra.getDictionary();
+
+        
+        // for (int i = 0; i < sampleDictionary.Count;i++) {
       
-            Console.WriteLine("{0} and {1}", sampleDictionary.Keys.ElementAt(i), sampleDictionary[sampleDictionary.Keys.ElementAt(i)]);
-        }
+        //     Console.WriteLine("{0} and {1}", sampleDictionary.Keys.ElementAt(i), sampleDictionary[sampleDictionary.Keys.ElementAt(i)]);
+        // }
 
 
 
