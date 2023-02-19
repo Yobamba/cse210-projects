@@ -1,82 +1,51 @@
 public class Word 
 {
-    private String[] _scriptureWords = {};
+    private List<Word> _wordList;
+    private Scripture _scripture = new Scripture();
+    private String _wordStr;
 
-    private String _scriptRef;
-    // private Dictionary<String, bool> _wordStateList = new Dictionary<String, bool>();
-
-    // Reference _scriptureRef = new Reference();
-
-
-    public void setReference(String scriptureRef) 
+    private bool _isHidden;
+    public Word() 
     {
-        _scriptRef = scriptureRef;
+
     }
 
-   
-    public void setScriptureWords(String[] scriptureWords) 
+    public Word(String word, bool isHidden)  
     {
-        foreach (String oneWord in scriptureWords) 
-        {
-            _scriptureWords = _scriptureWords.Append(oneWord).ToArray();
-           
-        }
+        _wordStr = word;
+       _isHidden = isHidden;
     }
 
-    // public Dictionary<String, bool> getDictionary() {
-    //     return _wordStateList;
-    // }
-    // public void setWords(String[] words) {
-
-        
-    //     foreach (String word in words) {
-    //         _wordStateList.Add(word, true);
-    //     }
-        
-    // }
-
-       public void hideWords() 
+    private Reference _scriptRef = new Reference();
+       public void HideWords() 
     {
-        String[] wordsToShow = _scriptureWords;
+        _wordList = _scripture.GetScriptureText();
+        List<Word> wordsToShow = _wordList;
         Random randNum = new Random();
         int[] randList = {};
-        // Console.WriteLine(_scriptureRef);
+      
         Console.Clear();
-        Console.WriteLine(_scriptRef);
+        Console.WriteLine(_scriptRef.ShowReference());
         Console.Write("");
-        for (int i = 0; i < wordsToShow.Length; i++) {
-                Console.Write(wordsToShow[i]);
+
+        for (int i = 0; i < wordsToShow.Count; i++) {
+                Console.Write(wordsToShow[i]._wordStr);
                 Console.Write(" ");
-                
-                
+
             }
         Console.WriteLine("");
-
-
-        
-        // This first for loop is to keep removing words as the user presses enter. 
-        for (int j = 0; j < wordsToShow.Length; j++) {
-            List<int> possible = Enumerable.Range(1, wordsToShow.Length).ToList();
-            
-
-            int randomInt = randNum.Next(wordsToShow.Length);
+    
+        for (int j = 0; j < wordsToShow.Count; j++) {
+            List<int> possible = Enumerable.Range(1, wordsToShow.Count).ToList();
+            int randomInt = randNum.Next(wordsToShow.Count);
             int searchElement = randomInt;
             bool isContained = Array.Exists(randList, element => element == searchElement);
-            if (isContained) {
-                
-                while (isContained) 
-                {   
-                    randomInt = randNum.Next(wordsToShow.Length);
-                    searchElement = randomInt;
-                    isContained = Array.Exists(randList, element => element == searchElement);
-                }
-
-                
-
-                
+            while (isContained) {
+                randomInt = randNum.Next(wordsToShow.Count);
+                searchElement = randomInt;
+                isContained = Array.Exists(randList, element => element == searchElement);
             }
-             
-            
+
             Console.WriteLine("Press enter to hide words. ");
             String userSays = Console.ReadLine();
             if (userSays == "quit") {
@@ -89,51 +58,25 @@ public class Word
             randList = randList.Append(randomInt).ToArray();
             
             String replacement = "";
-            foreach (char c in wordsToShow[j]) {
-                replacement += "_";
-            
-                
-              
+            foreach (char c in wordsToShow[j]._wordStr) {
+                replacement += "_";          
             }
 
-            wordsToShow[randomInt] = replacement;
-            
+            wordsToShow[randomInt]._wordStr = replacement;
+            wordsToShow[randomInt]._isHidden = true; 
+
             Console.Clear();
-            Console.Write(_scriptRef);
+            Console.Write(_scriptRef.ShowReference());
             Console.WriteLine("");
 
             // This for loop is to print out each word with the hidden words now gone. 
-            for (int i = 0; i < wordsToShow.Length; i++) {
-                Console.Write(wordsToShow[i]);
-                Console.Write(" ");
-                
-                
+            for (int i = 0; i < wordsToShow.Count; i++) {
+                Console.Write(wordsToShow[i]._wordStr);
+                Console.Write(" ");             
             }
-
             
-
-
         }
-        // Scripture neoOne = new Scripture();
-
-        // String[] scriptContainer = neoOne.getScriptureWords();
-        // String[] splitScript = scriptContainer
-
-
-    //     // This will start by displaying "AAA" and waiting for the user to press the enter key
-    //     Console.WriteLine("AAA");
-    //     Console.ReadLine();
-
-    //     // This will clear the console
-    //     Console.Clear();
-
-    //     // This will show "BBB" in the console where "AAA" used to be
-    //     Console.WriteLine("BBB");
-    // }
-
-
+}
 
 }
 
-
-}
