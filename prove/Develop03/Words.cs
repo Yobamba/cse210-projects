@@ -33,8 +33,8 @@ public class Word
                 Console.Write(" ");
 
             }
+
         Console.WriteLine("");
-    
         for (int j = 0; j < wordsToShow.Count; j++) {
             List<int> possible = Enumerable.Range(1, wordsToShow.Count).ToList();
             int randomInt = randNum.Next(wordsToShow.Count);
@@ -48,12 +48,14 @@ public class Word
 
             Console.WriteLine("Press enter to hide words. ");
             String userSays = Console.ReadLine();
+
             if (userSays == "quit") {
                 Console.WriteLine("");
                 Console.WriteLine("Keep treasuring up in your mind. ");
                 Console.WriteLine("");
                 break;
             }
+
             randList.Append(j);
             randList = randList.Append(randomInt).ToArray();
             
