@@ -52,14 +52,6 @@ public class Breathing : Activity
     }
     
 
-    public int PromptActivityTime() {
-        Console.Write("How long, in seconds, would you like for your session? ");
-        int _activityTime = int.Parse(Console.ReadLine());
-        return _activityTime;
-       
-
-        // int userTime = int.Parse(Console.ReadLine());
-        
-    }
+    
 
 }

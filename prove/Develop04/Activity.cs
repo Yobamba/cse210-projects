@@ -35,11 +35,31 @@ public class Activity
         Console.WriteLine(_activitySpecifications);
     }
 
+    public int PromptActivityTime() {
+        Console.Write("How long, in seconds, would you like for your session? ");
+        int _activityTime = int.Parse(Console.ReadLine());
+        return _activityTime;
+       
+
+        // int userTime = int.Parse(Console.ReadLine());
+        
+    }
+
     public void EndMessage() {
         Console.WriteLine();
         Console.WriteLine("Thank you for completing this " + $"{_activityName}. ");
         Console.WriteLine();
         Thread.Sleep(2000);
+    }
+
+    public void Spinner() {
+        string[] animationArray = {"|", "/", "-", "\\", "|", "-", "\\"};
+        for (int i = 0; i <= 6; i++) {
+            Console.Write($"{animationArray[i]}");
+            Thread.Sleep(700);
+            Console.Write("\b \b");
+            
+        }
     }
 
 
