@@ -8,24 +8,30 @@ public class Reflecting : Activity
         _activityName = "Reflection activity";
     }
 
-    public void Ponder() {
-        Random rando = new Random();
-        string[] ponderInstructions = _ponderInstructions;
-        string[] ponderQuestions = _ponderQuestions;
-        int randomInt = rando.Next(ponderInstructions.Length);
+    public void Ponder(int activityTime) {
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(activityTime);
+    
+        while (DateTime.Now < endTime) 
+        {
+            Random rando = new Random();
+            string[] ponderInstructions = _ponderInstructions;
+            string[] ponderQuestions = _ponderQuestions;
+            int randomInt = rando.Next(ponderInstructions.Length);
 
-        Console.WriteLine(ponderInstructions[randomInt]);
-        Console.WriteLine("When you have something in mind, press enter to continue. ");
-        Console.ReadLine();
-        Console.WriteLine("Now ponder on each of the following questions as they relate to this experience. ");
-        Thread.Sleep(6000);
-        Console.Write("> ");
-        Console.Write(ponderQuestions[randomInt]);
-        Spinner();
-        Thread.Sleep(6000);
-        EndMessage();
+            Console.WriteLine(ponderInstructions[randomInt]);
+            Console.WriteLine("When you have something in mind, press enter to continue. ");
+            Console.ReadLine();
+            Console.WriteLine("Now ponder on each of the following questions as they relate to this experience. ");
+            Thread.Sleep(6000);
+            Console.Write("> ");
+            Console.Write(ponderQuestions[randomInt]);
+            Spinner();
+            Thread.Sleep(6000);
+            EndMessage();
 
 
+    }
     }
 
 }

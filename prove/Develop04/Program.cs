@@ -31,7 +31,19 @@ class Program
                 Thread.Sleep(2000);
                 userTiempo = reflection.PromptActivityTime();
                 reflection.ShowAnimation();
-                reflection.Ponder();
+                reflection.Ponder(userTiempo);
+
+
+            }
+
+            else if (userStartOption == 3) 
+            {
+                Listening listen = new Listening();
+                listen.StartMessage();
+                Thread.Sleep(2000);
+                userTiempo = listen.PromptActivityTime();
+                listen.ShowAnimation();
+                listen.ListenUp(userTiempo);
 
 
             }
