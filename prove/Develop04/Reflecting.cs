@@ -19,6 +19,7 @@ public class Reflecting : Activity
         Console.ReadLine();
         Console.WriteLine("Now ponder on each of the following questions as they relate to this experience. ");
         Thread.Sleep(6000);
+        Console.Write("> ");
         Console.Write(ponderQuestions[randomInt]);
         Spinner();
         Thread.Sleep(6000);
