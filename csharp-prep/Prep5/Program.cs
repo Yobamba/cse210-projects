@@ -13,7 +13,7 @@ class Program
         DisplayResult(your_name, squared_number);
         static void DisplayWelcome() 
         {
-            Console.WriteLine("Welcome to the program! ");
+            Console.WriteLine();
 
         }
 
