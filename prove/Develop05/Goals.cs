@@ -6,11 +6,13 @@ public abstract class Goal
     protected int _points;
     protected string _goalString;
     protected bool _isComplete;
+    protected List<Object> _listOfGoals = new List<object>();
 
 
     public void DisplayOptions() 
     {
         Console.WriteLine("You have " + $"{_points}" + " points. ");
+        Console.WriteLine();
         Console.WriteLine("Menu options: ");
         Console.WriteLine("1. Create New Goal. ");
         Console.WriteLine("2. List Goals. ");
@@ -45,6 +47,7 @@ public abstract class Goal
     }
 
     public abstract object CreateGoal(string goalName, string goalDescription, int points, bool isComplete);
+    public abstract void ShowList();
 
     
    

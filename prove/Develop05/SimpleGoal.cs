@@ -7,6 +7,7 @@ public class SimpleGoal : Goal
     // private string _goalString;
     // private bool _isComplete;
 
+    private List<SimpleGoal> _listSimple = new List<SimpleGoal>();
     
 
     public SimpleGoal() 
@@ -20,6 +21,7 @@ public class SimpleGoal : Goal
         _goalDescription = goalDescription;
         _points = points;
         _isComplete = isComplete;
+        
         // _goals.Add($"{_goalName}" + $"{_goalDescription}");
     }
 
@@ -27,16 +29,22 @@ public class SimpleGoal : Goal
     {
         // _goals.Add(goals);
         SimpleGoal newSimpleGoal = new SimpleGoal();
+        
         newSimpleGoal._goalName = goalName;
         newSimpleGoal._goalDescription = goalDescription;
         newSimpleGoal._points = points;
-        
-        newSimpleGoal._isComplete = false;
-        newSimpleGoal._goalString = $"{_goalName} (_goalDescription)";
+        newSimpleGoal._isComplete = isComplete;
 
+         
+        
+        newSimpleGoal._goalString = $"{_goalName} (_goalDescription)";
+        _listSimple.Add(newSimpleGoal);
         // _goals.Add(newSimpleGoal);
+       
         return newSimpleGoal;
     }
+
+   
     
     public override void RecordEvent() 
     {
@@ -48,10 +56,30 @@ public class SimpleGoal : Goal
         
     }
 
+    public override void ShowList() 
+    {
+        for (int j = 0; j < _listSimple.Count; j++) {
+       
+            if (_listSimple[j]._isComplete == true) 
+            {
+                Console.WriteLine($"* [x] " + _listSimple[j]);
+            } else {
+            Console.WriteLine("no flex zone");
+            Console.WriteLine($"* [ ] " + _listSimple[j]);
+            } }
+
+            
+            
+
+
+        }
     
 
-    // public override void CreateGoal()
-    // {
-    //     throw new NotImplementedException();
-    // }
+    public override string ToString() 
+    {
+        return ($"{_goalName} " + _goalDescription +  " " + " " + _points + " " + _isComplete);
+   
+    }
+    
+
 }
