@@ -8,18 +8,20 @@ public class SimpleGoal : Goal
     // private bool _isComplete;
 
     private List<SimpleGoal> _listSimple = new List<SimpleGoal>();
+
+    private List<string> goalList = new List<string>();
     
 
     public SimpleGoal() 
     {
-          
+        _isComplete = false;
     }
 
     public SimpleGoal(string goalName, string goalDescription, int points, bool isComplete)
     {
         _goalName = goalName;
         _goalDescription = goalDescription;
-        _points = points;
+        _associatedPoints = points;
         _isComplete = isComplete;
         
         // _goals.Add($"{_goalName}" + $"{_goalDescription}");
@@ -32,7 +34,7 @@ public class SimpleGoal : Goal
         
         newSimpleGoal._goalName = goalName;
         newSimpleGoal._goalDescription = goalDescription;
-        newSimpleGoal._points = points;
+        newSimpleGoal._associatedPoints = points;
         newSimpleGoal._isComplete = isComplete;
 
          
@@ -48,7 +50,7 @@ public class SimpleGoal : Goal
     
     public override void RecordEvent() 
     {
-
+        
     }
 
     public override void Complete()
@@ -56,17 +58,30 @@ public class SimpleGoal : Goal
         
     }
 
-    public override void ShowList() 
+    public override List<string> ShowList() 
     {
         for (int j = 0; j < _listSimple.Count; j++) {
        
             if (_listSimple[j]._isComplete == true) 
             {
-                Console.WriteLine($"* [x] " + _listSimple[j]);
+                Console.WriteLine($"[x] " + _listSimple[j]);
+                string container = ($"[x] " + _listSimple[j]);
+                if (goalList.Contains(container) == false) 
+                {
+                    goalList.Add($"[x] " + _listSimple[j]);
+                }
+               
             } else {
-            Console.WriteLine("no flex zone");
-            Console.WriteLine($"* [ ] " + _listSimple[j]);
+           
+            Console.WriteLine($"[ ] " + _listSimple[j]);
+            string container2 = ($"[ ] " + _listSimple[j]);
+                if (goalList.Contains(container2) == false) 
+                {
+                    goalList.Add($"[ ] " + _listSimple[j]);
+                }
+           
             } }
+            return goalList;
 
             
             
@@ -77,7 +92,7 @@ public class SimpleGoal : Goal
 
     public override string ToString() 
     {
-        return ($"{_goalName} " + _goalDescription +  " " + " " + _points + " " + _isComplete);
+        return ($"{_goalName} - " + _goalDescription +  ". Worth: " + " " + _associatedPoints + " pts" );
    
     }
     
