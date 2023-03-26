@@ -13,10 +13,8 @@ public abstract class Goal
 
    
 
-    public virtual void RecordEvent() 
-    {
-
-    }
+    public abstract List<string> RecordEvent(string userEvent, List<string> simple, List<string> eternal, List<string> checklist);
+  
 
     public virtual void Complete() 
     {

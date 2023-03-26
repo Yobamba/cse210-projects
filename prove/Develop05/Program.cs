@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 class Program
 {
@@ -6,11 +7,17 @@ class Program
     {
         
         SimpleGoal simpGoal = new SimpleGoal();
-        ChecklistGoal check = new ChecklistGoal();
         EternalGoal eternal = new EternalGoal();
+        ChecklistGoal check = new ChecklistGoal();
+
+        List<Goal> globalList = new List<Goal>();
+       
+        GoalList listOfGoals = new GoalList();
+        // listOfGoals.ListGoals
         EternalQuestFile goalFile = new EternalQuestFile();
         Points tracker = new Points();
         Run startingObj = new Run();
+
         int userChose = 0;
         int userType = 0;
 
@@ -95,10 +102,48 @@ class Program
                 string userFile = Console.ReadLine();
                 goalFile.SaveGoals(userFile, simpleText, eternalText, checkText, tracker.GetPoints());
                 
+            } else if (userChose == 4) 
+            {
+                Console.Write("What is the name of the txt file that will store the goal? ");
+                string userLoadFile = Console.ReadLine();
+                goalFile.LoadGoals(userLoadFile);
+                
+            } else if (userChose == 5) 
+            {
+                Console.WriteLine("The goals are: ");
+                List<string> combinedList = listOfGoals.ListGoals(simpleText, eternalText, checkText);
+                int selectedEvent = int.Parse(Console.ReadLine());
+                string[] newArray = combinedList.ToArray();
+                for (int k = 0; k < combinedList.Count(); k++) 
+                {
+                    if (combinedList[k] == combinedList[selectedEvent - 1]) 
+                    {
+                        simpGoal.RecordEvent(combinedList[selectedEvent - 1], simpleText, eternalText, checkText);
+                    //     combinedList[k].RecordEvent(combinedList[selectedEvent - 1], simpleText, eternalText, checkText);
+                    // }
+                    Console.WriteLine(combinedList[k]);
+                }
+                Console.WriteLine(newArray.ElementAt(selectedEvent));
+                // foreach(Goal g in globalList) 
+                // {
+                //     g.
+                // }
+               
+                
+                
+
+           
+                if (selectedEvent == 1) 
+                {
+
+                }
+
+
+                
+                
             }
         
 
-            EternalGoal etGoal = new EternalGoal();
            
           
 
@@ -116,4 +161,6 @@ class Program
         
         
     }
+}
+
 }

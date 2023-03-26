@@ -5,9 +5,23 @@ public class EternalQuestFile
     private string _newEntry;
     private string _textFile;
 
-    public void LoadGoals() 
+    public void LoadGoals(string userTxt) 
     {
+        string filename = userTxt;
+        string[] lines = System.IO.File.ReadAllLines(filename);
 
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(";");
+
+            foreach (string linea in parts) 
+            {
+                Console.WriteLine(linea);
+            }
+
+            // string firstName = parts[0];
+            // string lastName = parts[1];
+}
     }
 
     public void SaveGoals(string userTxt, List<string> simple, List<string> eternal, List<string> checklist, int points) 
@@ -36,5 +50,9 @@ public class EternalQuestFile
             
             
         }
+
+        
     }
+
+        
 }

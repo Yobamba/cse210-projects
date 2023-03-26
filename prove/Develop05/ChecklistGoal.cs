@@ -47,9 +47,11 @@ public class ChecklistGoal : Goal
         return newChecklGoal;
 
     }
-    public override void RecordEvent() 
+    public override List<string> RecordEvent(string userEvent, List<string> simple, List<string> eternal, List<string> checklist) 
     {
-
+       
+        List<string> newList = new List<string>();
+        return newList;
     }
 
     public override void Complete()
@@ -92,7 +94,7 @@ public class ChecklistGoal : Goal
 
     public override string ToString() 
     {
-        return ($"{_goalName} " + _goalDescription +  " " + " " + _associatedPoints + " pts " + "-- Currently completed " +  _completionNumber + "/" + _checkTimes);
+        return ($"{_goalName} " + _goalDescription +  " " + " " + _associatedPoints + " pts " + "-- Currently completed " +  _completionNumber + "/" + _checkTimes + ";");
    
     }
 }

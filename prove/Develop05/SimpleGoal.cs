@@ -48,9 +48,40 @@ public class SimpleGoal : Goal
 
    
     
-    public override void RecordEvent() 
+    public override List<string> RecordEvent(string userEvent, List<string> simple, List<string> eternal, List<string> checklist) 
     {
+        // _associatedPoints
+        List<string> combinedList = new List<string>();
+        foreach (string simp in simple) 
+        {
+            combinedList.Add(simp);
+        }
+
+        foreach (string et in eternal) 
+        {
+            combinedList.Add(et);
+        }
+
+        foreach (string check in checklist) 
+        {
+            combinedList.Add(check);
+        }
+
+        goalList = combinedList;
+        for (int j = 0; j < goalList.Count(); j++) 
+        {
+            if (goalList[j] == userEvent) 
+            {
+                _listSimple[j]._isComplete = true;
+                goalList[j] = $"[x] " + _listSimple[j];
+            }
+            
+        } return goalList;
+
         
+        
+        
+       
     }
 
     public override void Complete()
@@ -92,7 +123,7 @@ public class SimpleGoal : Goal
 
     public override string ToString() 
     {
-        return ($"{_goalName} - " + _goalDescription +  ". Worth: " + " " + _associatedPoints + " pts" );
+        return ($"{_goalName} - " + _goalDescription +  ". Worth: " + " " + _associatedPoints + " pts"  + ";");
    
     }
     

@@ -13,7 +13,7 @@ public class EternalGoal : Goal
         EternalGoal newEternalGoal = new EternalGoal();
         newEternalGoal._goalName = goalName;
         newEternalGoal._goalDescription = goalDescription;
-      
+        newEternalGoal._associatedPoints = points;
         newEternalGoal._isComplete = false;
         _eternalList.Add(newEternalGoal);
        
@@ -56,13 +56,38 @@ public class EternalGoal : Goal
 
     public override string ToString() 
     {
-        return ($"{_goalName} " + _goalDescription +  ". Worth " + _associatedPoints + " pts");
+        return ($"{_goalName} " + _goalDescription +  ". Worth " + _associatedPoints + " pts" + ";");
    
     }
     
-    public override void RecordEvent() 
+    public override List<string> RecordEvent(string userEvent, List<string> simple, List<string> eternal, List<string> checklist) 
     {
+        List<string> combinedList = new List<string>();
+        foreach (string simp in simple) 
+        {
+            combinedList.Add(simp);
+        }
 
+        foreach (string et in eternal) 
+        {
+            combinedList.Add(et);
+        }
+
+        foreach (string check in checklist) 
+        {
+            combinedList.Add(check);
+        }
+
+        _eternalListTxt = combinedList;
+        for (int j = 0; j < _eternalListTxt.Count(); j++) 
+        {
+            if (_eternalListTxt[j] == userEvent) 
+            {
+                _eternalList[j]._isComplete = true;
+                _eternalListTxt[j] = $"[x] " + _eternalList[j];
+            }
+            
+        } return combinedList;
     }
 
     public override void Complete()
