@@ -21,4 +21,10 @@ public class Comment
 
     }
 
+    public void ShowComment() 
+    {
+        Console.WriteLine("Comment by: " + this._nameOfCommenter);
+        Console.WriteLine("Comment: " + this._commentTxt);
+    }
+
 }

@@ -3,11 +3,14 @@ public class Video
     private string _title;
     private string _author;
     private float _videoLength;
+
+    private string _commentAuthor;
+    private string _commentText;
     private List<Comment> _commentList = new List<Comment>();
 
     public Video() 
     {
-
+        
     }
     public Video(string title, string author, float videoLength, Comment commentItem) 
     {
@@ -39,15 +42,25 @@ public class Video
         string vidLength = Console.ReadLine();
         assistingList.Add(vidLength);
 
-        Console.WriteLine("Who's your name ? ");
+        Console.WriteLine("What's your name ? ");
         string comenterName = Console.ReadLine();
         assistingList.Add(comenterName);
+        _commentAuthor = comenterName;
 
         Console.WriteLine("Comment on the video. ");
         string comment = Console.ReadLine();
         assistingList.Add(comment);
+        _commentText = comment;
 
         return assistingList;
+    }
+
+    public void ShowVideoDetails() 
+    {
+        Console.WriteLine("Title: " + this._title);
+        Console.WriteLine("Author: " + this._author);
+        Console.WriteLine("Video length: " + this._videoLength + " s");
+        Console.WriteLine();
     }
 }
 
