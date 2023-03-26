@@ -63,7 +63,8 @@ public class Video
         {
             _commentPlaceHolder.ShowComment(this._commentList[i]);
         }
-        
+        Console.WriteLine();
+        Console.WriteLine("Total comments: " + _commentList.Count);
         Console.WriteLine();
     }
 }
