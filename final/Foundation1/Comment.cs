@@ -7,10 +7,23 @@ public class Comment
     {
 
     }
+
+    public Comment(string nameOfCommenter) 
+    {
+        _nameOfCommenter = nameOfCommenter;
+    }
     public Comment(string nameOfCommenter, string commentTxt) 
     {
         _nameOfCommenter = nameOfCommenter;
         _commentTxt = commentTxt;
+    }
+
+    
+
+    public string GetCommentAuthor() 
+    {
+        string nameOfCommenter = _nameOfCommenter;
+        return nameOfCommenter;
     }
 
     public Comment CreateComment(string nameOfCommenter, string commentTxt) 
@@ -21,10 +34,13 @@ public class Comment
 
     }
 
-    public void ShowComment() 
+    public void ShowComment(Comment insertComment) 
     {
-        Console.WriteLine("Comment by: " + this._nameOfCommenter);
-        Console.WriteLine("Comment: " + this._commentTxt);
+        Console.WriteLine("Comment by: " + insertComment._nameOfCommenter);
+        Console.WriteLine("> " + insertComment._commentTxt);
+        Console.WriteLine();
+        
     }
 
 }
+

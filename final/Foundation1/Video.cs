@@ -7,23 +7,25 @@ public class Video
     private string _commentAuthor;
     private string _commentText;
     private List<Comment> _commentList = new List<Comment>();
+    private Comment _commentPlaceHolder = new Comment();
 
     public Video() 
     {
         
     }
-    public Video(string title, string author, float videoLength, Comment commentItem) 
+    public Video(string title, string author, float videoLength, List<Comment> commentItems) 
     {
         _title = title;
         _author = author;
         _videoLength = videoLength;
-        _commentList.Add(commentItem);
+        
+        _commentList = commentItems;
 
     }
 
-    public Video CreateVideo(string title, string author, float videoLength, Comment commentItem) 
+    public Video CreateVideo(string title, string author, float videoLength, List<Comment> commentItems) 
     {
-        Video newVid = new Video(title, author, videoLength, commentItem);
+        Video newVid = new Video(title, author, videoLength, commentItems);
         return newVid; 
     }
 
@@ -42,15 +44,12 @@ public class Video
         string vidLength = Console.ReadLine();
         assistingList.Add(vidLength);
 
-        Console.WriteLine("What's your name ? ");
-        string comenterName = Console.ReadLine();
-        assistingList.Add(comenterName);
-        _commentAuthor = comenterName;
+        
 
-        Console.WriteLine("Comment on the video. ");
-        string comment = Console.ReadLine();
-        assistingList.Add(comment);
-        _commentText = comment;
+        
+        
+        
+       
 
         return assistingList;
     }
@@ -60,6 +59,11 @@ public class Video
         Console.WriteLine("Title: " + this._title);
         Console.WriteLine("Author: " + this._author);
         Console.WriteLine("Video length: " + this._videoLength + " s");
+        for (int i = 0; i < _commentList.Count; i++) 
+        {
+            _commentPlaceHolder.ShowComment(this._commentList[i]);
+        }
+        
         Console.WriteLine();
     }
 }
