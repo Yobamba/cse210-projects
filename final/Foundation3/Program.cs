@@ -4,6 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Foundation3 World!");
+        Lecture lecture = new Lecture();
+        lecture.ShowStandardDetails();
+        lecture.ShowFullDetails();
+        lecture.ShowShortDescription();
+        Reception reception = new Reception();
+        Outdoor outdoor = new Outdoor();
     }
 }

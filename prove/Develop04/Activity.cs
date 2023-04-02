@@ -65,7 +65,7 @@ public class Activity
     for (int i = 0; i <= 6; i++) {
       Console.Write($"{animationArray[i]}");
       Thread.Sleep(700);
-      Console.Write("\b \b");
+      Console.Write("\b \b"); 
     }
     Console.WriteLine();
   }
