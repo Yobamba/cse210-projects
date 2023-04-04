@@ -1,12 +1,12 @@
 public class Event 
 {
     
-    private string _eventTitle;
+    protected string _eventTitle;
     private string _description;
     private string _date;
     private int _time;
     private Address _address = new Address();
-    protected string _eventType;
+   
 
     //Standard details
     // Lists the title, description, date, time, and address.
@@ -23,28 +23,30 @@ public class Event
     public string ShowFullDetails() 
     {
         string standard = ShowStandardDetails();
-        if (_eventType == "Lecture") 
+        string extraInfo = "";
+        string extraInfo2 = "";
+        if (_eventTitle == "Lecture") 
         {
             Console.Write("What is the name of the speaker? ");
-            string extraInfo = Console.ReadLine();
+            extraInfo = Console.ReadLine();
             Console.Write("What is the capacity? ");
-            string extraInfo2 = Console.ReadLine();
+            extraInfo2 = Console.ReadLine();
         }
 
-        else if (_eventType == "Reception") 
+        else if (_eventTitle == "Reception") 
         {
-            string extraInfo = "Please email: sample@gmail.com";
-            string extraInfo2 = "";
+            extraInfo = "Please email: sample@gmail.com";
+            extraInfo2 = "";
 
         }
 
-        else if (_eventType == "Outdoor") 
+        else if (_eventTitle == "Outdoor") 
         {
             Console.Write("What's the weather like? ");
-            string extraInfo = Console.ReadLine();
-            string extraInfo2 = "";
+            extraInfo = Console.ReadLine();
+            extraInfo2 = "";
         }
-        return _eventType + "\n" + standard + "\n" + $"{extraInfo}" + $"{extraInfo2}";
+        return _eventTitle + "\n" + standard + "\n" + $"{extraInfo}" + $"{extraInfo2}";
 
 
     }
@@ -53,7 +55,7 @@ public class Event
     //Lists the type of event, title, and the date.
     public string ShowShortDescription() 
     {
-        return _eventType + " " + _eventTitle + " : " + _date;
+        return _eventTitle + " : " + _date;
     }
 
 
